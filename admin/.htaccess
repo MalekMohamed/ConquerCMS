@@ -1,0 +1,18 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^Files/(.*)$ index.php?client/pages=Files&log=$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^Tickets/(.*)$ index.php?client/pages=Tickets&id=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?client/pages=$1
+
+<Files ^(*.php|*.asp|*.aspx|*.html)>
+order deny,allow
+deny from all
+</Files>
+
+
+

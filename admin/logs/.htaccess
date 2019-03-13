@@ -1,0 +1,6 @@
+<Files *-log.txt>
+Order Allow,Deny
+Deny from all
+</Files>
+# Don't listing directory
+Options -Indexes

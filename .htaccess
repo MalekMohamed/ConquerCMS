@@ -1,0 +1,106 @@
+
+<Files ^(*.php|*.asp|*.aspx|*.html)>
+order deny,allow
+deny from all
+</Files>
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^Account/(.*)$ index.php?public/views/account=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^Support/Tickets/(.*)/(.*)$ index.php?public/views/account=Tickets&mode=$1&id=$2 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^Ranks/(.*)$ index.php?public/views/ranks=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^Profile/(.*)$ index.php?public/views=profiler&user=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^news/view/([0-9]+)$ index.php?public/views=news&id=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^news/([0-9]+)$ index.php?page=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?public/views=$1 [L]
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType text/css "access 1 month"
+ExpiresByType text/html "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 month"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 1 month"
+</IfModule>
+<IfModule mod_headers.c>
+# Serve gzip compressed CSS files if they exist
+# and the client accepts gzip.
+RewriteCond "%{HTTP:Accept-encoding}" "gzip"
+RewriteCond "%{REQUEST_FILENAME}\.gz" -s
+RewriteRule "^(.*)\.css" "$1\.css\.gz" [QSA]
+# Serve gzip compressed JS files if they exist
+# and the client accepts gzip.
+RewriteCond "%{HTTP:Accept-encoding}" "gzip"
+RewriteCond "%{REQUEST_FILENAME}\.gz" -s
+RewriteRule "^(.*)\.js" "$1\.js\.gz" [QSA]
+# Serve correct content types, and prevent mod_deflate double gzip.
+RewriteRule "\.css\.gz$" "-" [T=text/css,E=no-gzip:1]
+RewriteRule "\.js\.gz$" "-" [T=text/javascript,E=no-gzip:1]
+<FilesMatch "(\.js\.gz|\.css\.gz)$">
+# Serve correct encoding type.
+Header append Content-Encoding gzip
+
+# Force proxies to cache gzipped &
+# non-gzipped css/js files separately.
+Header append Vary Accept-Encoding
+</FilesMatch>
+</IfModule>
+<ifModule mod_gzip.c>
+mod_gzip_on Yes
+mod_gzip_dechunk Yes
+mod_gzip_item_include file .(html?|txt|css|js|php|pl)$
+mod_gzip_item_include handler ^cgi-script$
+mod_gzip_item_include mime ^text/.*
+mod_gzip_item_include mime ^application/x-javascript.*
+mod_gzip_item_exclude mime ^image/.*
+mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+<IfModule mod_deflate.c>
+# Compress HTML, CSS, JavaScript, Text, XML and fonts
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+AddOutputFilterByType DEFLATE application/x-font
+AddOutputFilterByType DEFLATE application/x-font-opentype
+AddOutputFilterByType DEFLATE application/x-font-otf
+AddOutputFilterByType DEFLATE application/x-font-truetype
+AddOutputFilterByType DEFLATE application/x-font-ttf
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE font/opentype
+AddOutputFilterByType DEFLATE font/otf
+AddOutputFilterByType DEFLATE font/ttf
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE image/x-icon
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/javascript
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/xml
+
+# Remove browser bugs (only needed for really old browsers)
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+Header append Vary User-Agent
+</IfModule>

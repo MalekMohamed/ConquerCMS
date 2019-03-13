@@ -1,0 +1,2 @@
+<iframe id="facebook" src="https://www.facebook.com/plugins/page.php?href=<?php echo $app->Facebook; ?>%2F&tabs=timeline&width=265&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1661070084210142" width="265" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+<iframe id="discord" src="https://discordapp.com/widget?id=165942191015985152&theme=dark" width="265" height="500" allowtransparency="true" frameborder="0"></iframe>

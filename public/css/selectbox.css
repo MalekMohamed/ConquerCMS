@@ -1,0 +1,171 @@
+/*-------------------------------------------------------------------------*/
+/*	Selectbox plugin SERENITY skin by E. Darksider
+/*-------------------------------------------------------------------------*/
+.sbHolder {
+	width: 80%;
+	height: 18px;
+	min-height: 18px;
+	max-height: 18px;
+	color: #a9a8a8;
+	cursor: pointer;
+	margin: 5px;
+	padding: 8px;
+	display: inline-block;
+	position: relative;
+	font-size: 12px;
+	text-align: left;
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	vertical-align: middle;
+}
+
+.sbHolder a {
+	float: none !important;
+	margin: 0 !important;
+}
+
+/* Arrow */
+.sbHolder .sbToggle {
+	width: 37px;
+	height: 36px;
+	top: 0;
+	right: 0;
+	z-index: 9;
+	display: block;
+	position: absolute;
+	background-color: transparent;
+	background-image: url(../images/misc/select-arrow.png);
+	background-repeat: no-repeat;
+	background-position: 11px 16px;
+}
+
+.sbHolder .sbToggle.sbToggleOpen {
+	background-position: 11px -14px;
+}
+
+/* Field */
+.sbHolder .sbSelector {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	color: #a9a8a8 !important;
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	box-shadow: 0 0 0 1px #000000, inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 3px 0 rgba(255, 255, 255, 0.35), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0 0 0 1px #000000, inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 3px 0 rgba(255, 255, 255, 0.35), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 0 0 0 1px #000000, inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 3px 0 rgba(255, 255, 255, 0.35), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	font-weight: bold;
+	line-height: 38px;
+	text-indent: 8px;
+	text-shadow: 0 0 4px rgba(0, 0, 0, 0.30), 0 2px 0 #000000;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background-color: #0A0A0A;
+	transition: color ease-in-out 300ms, box-shadow ease-in-out 300ms;
+	-o-transition: color ease-in-out 300ms, box-shadow ease-in-out 300ms;
+	-ms-transition: color ease-in-out 300ms, box-shadow ease-in-out 300ms;
+	-moz-transition: color ease-in-out 300ms, box-shadow ease-in-out 300ms;
+	-webkit-transition: color ease-in-out 300ms, box-shadow ease-in-out 300ms;
+}
+
+.sbHolder .sbToggle.sbToggleOpen + .sbSelector {
+	color: #fefefe !important;
+	box-shadow: 0 0 0 1px #000000, inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 3px 0 rgba(255, 213, 146, 0.8), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0 0 0 1px #000000, inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 3px 0 rgba(255, 213, 146, 0.8), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 0 0 0 1px #000000, inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 3px 0 rgba(255, 213, 146, 0.8), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+}
+
+/* Dropdown */
+.sbHolder .sbOptions {
+	width: 100%;
+	max-height: 190px !important;
+	top: 0;
+	left: 0;
+	margin: 3px 0 0 0;
+	padding: 0;
+	cursor: default;
+	z-index: 99;
+	position: absolute;
+	overflow-x: hidden;
+	overflow-y: auto;
+	box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 1px 0 rgba(255, 213, 146, 0.4), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 1px 0 rgba(255, 213, 146, 0.4), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 1px 0 rgba(255, 213, 146, 0.4), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.sbHolder .sbOptions li {
+	width: auto;
+	height: 38px;
+	margin: 0 auto;
+	padding: 0;
+	box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 1px 0 rgba(255, 213, 146, 0.4), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 1px 0 rgba(255, 213, 146, 0.4), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 1px 0 rgba(255, 213, 146, 0.4), 0 3px 0 0 rgba(0, 0, 0, 0.75);
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	background-color: #0A0A0A;
+}
+
+.sbHolder .sbOptions li:last-child {
+	border: none;
+}
+
+.sbHolder .sbOptions li a {
+	color: #606060;
+	display: block;
+	padding: 10px;
+	font-weight: bold;
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	text-shadow: 0 0 4px rgba(0, 0, 0, 0.30), 0 2px 0 #000000;
+	text-transform: capitalize;
+	transition: color 200ms ease-in-out;
+	-o-transition: color 200ms ease-in-out;
+	-ms-transition: color 200ms ease-in-out;
+	-moz-transition: color 200ms ease-in-out;
+	-webkit-transition: color 200ms ease-in-out;
+}
+
+.sbHolder .sbOptions li a:hover,
+.sbHolder .sbOptions li a:focus,
+.sbHolder .sbOptions li .sbFocus {
+	color: #ADADAD;
+}
+
+.sbHolder .sbOptions li .sbDisabled {
+	color: #444444;
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.30), 0 2px 0 #000000;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-transform: capitalize;
+	background-color: #0E0E0E;
+}
+
+.sbHolder .sbOptions .sbGroup {
+	color: #EBB52D;
+	display: block;
+	padding: 10px;
+	font-weight: bold;
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	text-shadow: 0 0 4px rgba(0, 0, 0, 0.30), 0 2px 0 #000000;
+	text-transform: capitalize;
+}
+
+.sbHolder .sbOptions .sbSub {
+	padding-left: 17px;
+}
+
+/* Disabled */
+.sbHolder.sbHolderDisabled {opacity: 0.8;}
+.sbHolder.sbHolderDisabled .sbToggle {}
+.sbHolder.sbHolderDisabled .sbHolder {}

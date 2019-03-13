@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Installation - MagicCMS</title>
+
+        <meta charset="utf-8">
+
+		<link rel="shortcut icon" href="images/favicon.png" />
+		<link rel="stylesheet" href="css/main.css" />
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+		<script src="js/ui.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/memory.js"></script>
+		<script>
+			$(document).ready(function()
+			{
+				UI.initialize();
+				Ajax.initialize();
+				Memory.populate();
+			})
+		</script>
+
+		<!--[if IE]>
+			<style type="text/css">
+			#main .right h2 img {
+				position:relative;
+			}
+			</style>
+		<![endif]-->
+
+		<!--[if LTE IE 7]>
+			<style type="text/css">
+			#main .right .statistics span {
+				width:320px;
+			}
+			</style>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div id="popup_bg"></div>
+
+		<!-- confirm box -->
+		<div id="confirm" class="popup">
+			<h1 class="popup_question" id="confirm_question"></h1>
+
+			<div class="popup_links">
+				<a href="javascript:void(0)" class="popup_button" id="confirm_button"></a>
+				<a href="javascript:void(0)" class="popup_hide" id="confirm_hide" onClick="UI.hidePopup()">
+					Cancel
+				</a>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+
+		<!-- alert box -->
+		<div id="alert" class="popup">
+			<h1 class="popup_message" id="alert_message"></h1>
+
+			<div class="popup_links">
+				<a href="javascript:void(0)" class="popup_button" id="alert_button">Okay</a>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+
+		<div id="wrap">
+			<div id="fixer">
+				<!-- Top bar -->
+				<header>
+					<div class="center_1020">
+						<a href="https://www.facebook.com/UPConquerOnline" class="logo"></a>
+					</div>
+				</header>
+
+				<!-- Main content -->
+				<section id="wrapper">
+					<div id="top_spacer"></div>
+					<div class="center_1020" id="main">
+
+						<!-- Main Left column -->
+						<aside class="left">
+							<nav>
+								<a class="active"><div class="icon dashboard"></div> Install</a>
+								<section class="sub">
+									<a class="active" id="1"><div class="icon file"></div> Introduction</a>
+									<a id="2"><div class="icon link"></div> Requirements</a>
+									<a id="3"><div class="icon list"></div> General</a>
+									<a id="4"><div class="icon database"></div> Database</a>
+									<a id="5"><div class="icon cursor"></div> Complete installation</a>
+								</section>
+							</nav>
+
+							<div class="spacer"></div>
+						</aside>
+
+						<!-- Main right column -->
+						<aside class="right">
+							<h1 id="page_title">Install</h1>
+
+							<section class="box big step">
+								<h2><img src="images/icons/black16x16/ic_empty_document.png"/> Introduction</h2>
+								<span>
+									<div class="introduction">
+										<h3>Welcome to ConquerCMS</h3>
+									
+										<b>Dear customer</b>, We are happy to introduce you to the next chapter of our very own ConquerCMS. Years have passed since the initial release and the system has grown better and stronger for every version. The core of this beast is powered by clean, object oriented PHP code. On the front we also make sure to amaze your visitors with more Javascript-powered live interactions than ever before.
+									</div>
+								</span>
+
+								<div class="installer_navigation">
+									<a class="next nice_button">Start the installer</a>
+								</div>
+							</section>
+
+							<section class="box big step" data-validation="requirements" style="display:none;">
+
+								<h2><img src="images/icons/black16x16/ic_empty_document.png"/> Server requirements <span style="color:red;display:inline;padding:0px;">(important!)</span></h2>
+
+								<span>
+
+									<div class="introduction">
+										<h3>What do I need to run this system?</h3>
+									    
+                                        <div class="folder-permissions">
+                                            <h4>Folder Permissions</h4>
+    										<div style="font-weight:bold;margin:10px 0px;" id="config_folder">&bull; /public/img/ needs to be writable (see <a href="http://en.wikipedia.org/wiki/Chmod" target="_blank">chmod</a>)</div>
+
+    										<div style="font-weight:bold;margin:10px 0px;" id="modules_folder">&bull; /public/themes/ is writable</div>
+
+                                        </div>
+										
+										<div class="php-version">
+											<h4>PHP Version</h4>
+											Minimum required PHP version: 5.3 <span class="check-result"></span>
+										</div>
+                                        
+                                        <div class="php-extensions">
+                                            <h4>PHP Extensions</h4>
+                                            
+                                            <b>The following PHP extensions are required:</b><br>
+    										php_mysqli, pdo_mysql, php_gd, php_json
+
+											<span class="check-result" style="display:none"></span>
+                                            <div id="php-extensions-missing" style="display:none;color:red;margin-top:15px">
+                                                <b>The following modules are missing:</b>
+                                                <span class="extensions"></span>
+                                            </div>
+                                            
+    										<div class="how_to_box">
+                                                <div class="title">How do I enable PHP extensions?</div>
+                                                <div class="content">
+        											Go into your PHP directory and find the <code>php.ini</code> file. Mine was located in <code>C:\wamp\bin\php\php5.3.13</code> OR <code>C:\AppServ\php5</code>. Open the file with a text editor and search (CTRL+F) for one of the modules you need to enable. To enable them, simply remove the <code>;</code> character in front of the line.<br />Save the file and restart your webserver to apply the changes.<br /><br />
+
+        											<img src="images/php.jpg" style="border:1px solid #ccc" />
+                                                </div>
+    										</div>
+                                        </div>
+                                        
+                                        <div class="apache-modules">
+                                            <h4>Apache Modules</h4>
+                                            
+    										<b>We recommend ConquerCMS in combination with an Apache Webserver.<br><br>
+                                            The Apache modules you'll need are:</b> <br>
+                                            mod_rewrite, mod_gzip
+
+											<span class="check-result" style="display:none"></span>
+                                            <div id="apache-modules-missing" style="display:none;color:#e18f00;margin-top:15px">
+                                                <b>The following modules are missing:</b>
+                                                <span class="modules"></span>
+                                            </div>
+    										
+                                            <div class="how_to_box">
+                                                <div class="title">How do I enable Apache modules?</div>
+                                                <div class="content">
+        											Go into your Apache directory and find the <code>httpd.conf</code> file. Mine was located in <code>Apache\conf\</code>. Open the file with a text editor and search <code>CTRL+F</code> for one of the modules you need to enable. To enable them, simply remove the <code>#</code> character in front of the line.<br />Save the file and restart your webserver to apply the changes.<br /><br />
+        											<img src="images/apache.jpg" style="border:1px solid #ccc" />
+                                                </div>
+    										</div>
+                                        </div>
+									</div>
+								</span>
+
+								<div class="installer_navigation">
+									<a class="prev nice_button">Previous step</a>
+									<a class="next nice_button">Next step</a>
+								</div>
+							</section>
+
+							<section class="box big step" data-validation="general" style="display:none;">
+								<h2><img src="images/icons/black16x16/ic_list.png"/> General settings</h2>
+
+								<span>
+										All options can be modified later.
+								</span>
+
+								<form id="form-general-settings">
+<input type="hidden" id="emulator">
+									<label for="server_name">Server name</label>
+									<input type="text" id="server_name" placeholder="MyServer" required />
+									<label for="state">GM State</label>
+									<input type="number" placeholder="4" id="state" required />
+									<label for="kings">Kings</label>
+									<input type="number" placeholder="3" min="3" data-tip="Number of Kings in Donation" max="100" id="kings" required />
+									<label for="prince">Princes</label>
+									<input type="number" data-tip="Number of Princes in Donation" placeholder="15" min="15" max="35" id="prince" required />
+									<label for="rows">Rank Rows</label>
+									<input type="number" data-tip="Number of Characters appear in Rank Page" placeholder="20" id="rows" required />
+									<label for="security_code">Admin panel extra security password</label>
+									<input type="text" placeholder="Security Code to enter Admin panel" id="security_code" />
+
+
+								</form>
+
+								<div class="installer_navigation">
+									<a class="prev nice_button">Previous step</a>
+									<a class="next nice_button">Next step</a>
+								</div>
+							</section>
+
+							<section class="box big step" data-validation="database" style="display:none;">
+								<h2><img src="images/icons/black16x16/ic_grid.png"/> Database settings</h2>
+
+								<form>
+									<h3>Accounts Database</h3>
+
+									<label for="cms_hostname">Hostname</label>
+									<input type="text" id="cms_hostname" placeholder="localhost"/>
+
+									<label for="cms_username">Username</label>
+									<input type="text" id="cms_username" placeholder="root"/>
+
+									<label for="cms_password">Password</label>
+									<input type="text" id="cms_password" placeholder="Appserv password" />
+
+									<label for="cms_database">Database name</label>
+									<input type="text" id="cms_database" placeholder="cq"/>
+
+									<label for="cms_port">Port</label>
+									<input type="text" id="cms_port" value="3306" placeholder="3306" />
+<hr>
+									<h3>Game Database</h3>
+
+									<label for="game_hostname">Hostname</label>
+									<input type="text" id="game_hostname" placeholder="localhost"/>
+
+									<label for="game_username">Username</label>
+									<input type="text" id="game_username" placeholder="root"/>
+
+									<label for="game_password">Password</label>
+									<input type="text" id="game_password" placeholder="Appserv password" />
+
+									<label for="game_database">Database name</label>
+									<input type="text" id="game_database" placeholder="cq"/>
+
+								</form>
+
+								<div class="installer_navigation">
+									<a class="prev nice_button">Previous step</a>
+									<a id="start-install" class="next nice_button">Install</a>
+								</div>
+							</section>
+
+
+
+							<section class="box big step" style="display:none;">
+								<h2><img src="images/icons/black16x16/ic_time.png"/> Installing...</h2>
+								<span id="install" style="padding: 10px 15px">
+
+								</span>
+							</section>
+						</aside>
+
+						<div class="clear"></div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="center_1020">
+				<div class="divider2"></div>
+				<aside id="logo"><a href="http://fusion-hub.com" class="logo"></a></aside>
+				<div class="divider"></div>
+
+				<aside id="facebook">
+					<h1>Like us on Facebook!</h1>
+					<div id="fb_icon"></div>
+					<a href="http://facebook.com/Conquer.hubs" target="_blank">Conquer Hub</a>
+				</aside>
+				<div class="divider"></div>
+				<aside id="html5">
+					<a href="http://www.w3.org/html/logo/" data-tip="This website makes use of the next generation of web technologies">
+						<img src="images/html5.png">
+					</a>
+				</aside>
+				<div class="divider"></div>
+				<div class="clear"></div>
+			</div>
+		</footer>
+	<script type="application/javascript">
+		$(document).ready(function () {
+			$('#start-install').click(function () {
+				Ajax.Install.initialize();
+			});
+		});
+	</script>
+	</body>
+</html>
